@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="aDbDEINOSCloud_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dns_Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Razon_Social" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="255" />
+          <Property Name="CUIT" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telefono_Contacto" Type="nvarchar" MaxLength="220" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="255" />
+          <Property Name="idClientMovimiento" Type="int" />
+          <Property Name="COD_CLIENT" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="dns_Solicitud">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLote" Type="int" Nullable="false" />
+          <Property Name="NroPeriodo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NroSolicitud" Type="varchar" MaxLength="20" />
+          <Property Name="NombreSolicitud" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaSolicitud" Type="datetime" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="FechaEnviado" Type="datetime" />
+          <Property Name="OC_Fecha" Type="datetime" />
+          <Property Name="OC_Nro" Type="nvarchar" MaxLength="16" />
+          <Property Name="Solicito" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Observacion" Type="ntext" />
+          <Property Name="imp_Total" Type="float" />
+          <Property Name="imp_Facturado" Type="float" />
+          <Property Name="imp_Saldo" Type="float" />
+          <Property Name="FechaVisitaObra" Type="datetime" />
+          <Property Name="IdTipoCertificacion" Type="int" />
+          <Property Name="IdEstadoTrabajo" Type="int" />
+          <Property Name="IdEstadoFacturacion" Type="int" />
+          <Property Name="IdFactura" Type="nchar" MaxLength="10" />
+          <Property Name="Creado" Type="datetime" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="Modificado" Type="datetime" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="AsignadoA" Type="varchar" MaxLength="55" />
+          <Property Name="InformeEstado" Type="ntext" />
+          <Property Name="IdEstadoSolicitud" Type="int" />
+          <Property Name="IdGestionComercial" Type="int" />
+          <Property Name="AlarmRecurrent" Type="bit" />
+          <Property Name="MovimientosFechaDesde" Type="datetime" />
+          <Property Name="MovimientosFechaHasta" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dns_SolicitudEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="20" />
+          <Property Name="Order" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dns_SolicitudLote">
+          <Key>
+            <PropertyRef Name="IdLote" />
+          </Key>
+          <Property Name="IdLote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="NroLote" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FechaLote" Type="smalldatetime" Nullable="false" />
+          <Property Name="FechaVencim" Type="smalldatetime" />
+          <Property Name="Periodo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ubic_Origen" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Ubic_Destino" Type="nvarchar" MaxLength="255" />
+          <Property Name="TITULO" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdTipoPresupuesto" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="Solicito" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Observacion" Type="ntext" />
+          <Property Name="ValorInicial" Type="money" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Archivo" Type="nvarchar" MaxLength="255" />
+          <Property Name="ArchivoObject" Type="varbinary(max)" />
+          <Property Name="ArchivoSize" Type="varchar" MaxLength="20" />
+          <Property Name="IdAuxiliarCC" Type="int" />
+          <Property Name="Creado" Type="datetime" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="50" />
+          <Property Name="Modificado" Type="datetime" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="aDbDEINOSCloud_DevModelStoreContainer">
+          <EntitySet Name="dns_Clientes" EntityType="Self.dns_Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dns_Solicitud" EntityType="Self.dns_Solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dns_SolicitudEstado" EntityType="Self.dns_SolicitudEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dns_SolicitudLote" EntityType="Self.dns_SolicitudLote" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aDbDEINOSCloud_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dns_Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Razon_Social" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CUIT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono_Contacto" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="idClientMovimiento" Type="Int32" />
+          <Property Name="COD_CLIENT" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dns_Solicitud">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLote" Type="Int32" Nullable="false" />
+          <Property Name="NroPeriodo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NroSolicitud" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NombreSolicitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaSolicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="FechaEnviado" Type="DateTime" Precision="3" />
+          <Property Name="OC_Fecha" Type="DateTime" Precision="3" />
+          <Property Name="OC_Nro" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Solicito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imp_Total" Type="Double" />
+          <Property Name="imp_Facturado" Type="Double" />
+          <Property Name="imp_Saldo" Type="Double" />
+          <Property Name="FechaVisitaObra" Type="DateTime" Precision="3" />
+          <Property Name="IdTipoCertificacion" Type="Int32" />
+          <Property Name="IdEstadoTrabajo" Type="Int32" />
+          <Property Name="IdEstadoFacturacion" Type="Int32" />
+          <Property Name="IdFactura" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Creado" Type="DateTime" Precision="3" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modificado" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AsignadoA" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="InformeEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdEstadoSolicitud" Type="Int32" />
+          <Property Name="IdGestionComercial" Type="Int32" />
+          <Property Name="AlarmRecurrent" Type="Boolean" />
+          <Property Name="MovimientosFechaDesde" Type="DateTime" Precision="3" />
+          <Property Name="MovimientosFechaHasta" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="dns_SolicitudEstado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dns_SolicitudLote">
+          <Key>
+            <PropertyRef Name="IdLote" />
+          </Key>
+          <Property Name="IdLote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="NroLote" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaLote" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaVencim" Type="DateTime" Precision="0" />
+          <Property Name="Periodo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ubic_Origen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ubic_Destino" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TITULO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTipoPresupuesto" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="Solicito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValorInicial" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Archivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ArchivoObject" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ArchivoSize" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdAuxiliarCC" Type="Int32" />
+          <Property Name="Creado" Type="DateTime" Precision="3" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modificado" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="aDbDEINOSCloud_DevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dns_Clientes" EntityType="Self.dns_Clientes" />
+          <EntitySet Name="dns_Solicitud" EntityType="Self.dns_Solicitud" />
+          <EntitySet Name="dns_SolicitudEstado" EntityType="Self.dns_SolicitudEstado" />
+          <EntitySet Name="dns_SolicitudLote" EntityType="Self.dns_SolicitudLote" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="aDbDEINOSCloud_DevModelStoreContainer" CdmEntityContainer="aDbDEINOSCloud_DevEntities">
+          <EntitySetMapping Name="dns_Clientes">
+            <EntityTypeMapping TypeName="aDbDEINOSCloud_DevModel.dns_Clientes">
+              <MappingFragment StoreEntitySet="dns_Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
+                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="idClientMovimiento" ColumnName="idClientMovimiento" />
+                <ScalarProperty Name="COD_CLIENT" ColumnName="COD_CLIENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dns_Solicitud">
+            <EntityTypeMapping TypeName="aDbDEINOSCloud_DevModel.dns_Solicitud">
+              <MappingFragment StoreEntitySet="dns_Solicitud">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdLote" ColumnName="IdLote" />
+                <ScalarProperty Name="NroPeriodo" ColumnName="NroPeriodo" />
+                <ScalarProperty Name="NroSolicitud" ColumnName="NroSolicitud" />
+                <ScalarProperty Name="NombreSolicitud" ColumnName="NombreSolicitud" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="FechaEnviado" ColumnName="FechaEnviado" />
+                <ScalarProperty Name="OC_Fecha" ColumnName="OC_Fecha" />
+                <ScalarProperty Name="OC_Nro" ColumnName="OC_Nro" />
+                <ScalarProperty Name="Solicito" ColumnName="Solicito" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="imp_Total" ColumnName="imp_Total" />
+                <ScalarProperty Name="imp_Facturado" ColumnName="imp_Facturado" />
+                <ScalarProperty Name="imp_Saldo" ColumnName="imp_Saldo" />
+                <ScalarProperty Name="FechaVisitaObra" ColumnName="FechaVisitaObra" />
+                <ScalarProperty Name="IdTipoCertificacion" ColumnName="IdTipoCertificacion" />
+                <ScalarProperty Name="IdEstadoTrabajo" ColumnName="IdEstadoTrabajo" />
+                <ScalarProperty Name="IdEstadoFacturacion" ColumnName="IdEstadoFacturacion" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="AsignadoA" ColumnName="AsignadoA" />
+                <ScalarProperty Name="InformeEstado" ColumnName="InformeEstado" />
+                <ScalarProperty Name="IdEstadoSolicitud" ColumnName="IdEstadoSolicitud" />
+                <ScalarProperty Name="IdGestionComercial" ColumnName="IdGestionComercial" />
+                <ScalarProperty Name="AlarmRecurrent" ColumnName="AlarmRecurrent" />
+                <ScalarProperty Name="MovimientosFechaDesde" ColumnName="MovimientosFechaDesde" />
+                <ScalarProperty Name="MovimientosFechaHasta" ColumnName="MovimientosFechaHasta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dns_SolicitudEstado">
+            <EntityTypeMapping TypeName="aDbDEINOSCloud_DevModel.dns_SolicitudEstado">
+              <MappingFragment StoreEntitySet="dns_SolicitudEstado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dns_SolicitudLote">
+            <EntityTypeMapping TypeName="aDbDEINOSCloud_DevModel.dns_SolicitudLote">
+              <MappingFragment StoreEntitySet="dns_SolicitudLote">
+                <ScalarProperty Name="IdLote" ColumnName="IdLote" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="NroLote" ColumnName="NroLote" />
+                <ScalarProperty Name="FechaLote" ColumnName="FechaLote" />
+                <ScalarProperty Name="FechaVencim" ColumnName="FechaVencim" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Ubic_Origen" ColumnName="Ubic_Origen" />
+                <ScalarProperty Name="Ubic_Destino" ColumnName="Ubic_Destino" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="IdTipoPresupuesto" ColumnName="IdTipoPresupuesto" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Solicito" ColumnName="Solicito" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="ValorInicial" ColumnName="ValorInicial" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="ArchivoObject" ColumnName="ArchivoObject" />
+                <ScalarProperty Name="ArchivoSize" ColumnName="ArchivoSize" />
+                <ScalarProperty Name="IdAuxiliarCC" ColumnName="IdAuxiliarCC" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
